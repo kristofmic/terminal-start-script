@@ -1,0 +1,17 @@
+#!/usr/bin/env osascript -l JavaScript
+
+var
+  Terminal = Application('Terminal'),
+  Tab = Terminal.Tab,
+  SystemEvents = Application('System Events'),
+  projectPath = '~/Code/Voxa/',
+  command;
+
+Terminal.activate();
+
+//top row
+var foo = Terminal.doScript('cd ' + projectPath + 'zero-api && grunt');
+console.log(JSON.stringify(foo));
+Terminal.doScript('cd ' + projectPath + 'paperboy && grunt', {in: foo});
+console.log(JSON.stringify(foo));
+console.log(Terminal.windows.length);
